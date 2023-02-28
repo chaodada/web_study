@@ -72,3 +72,45 @@ output: {
       filename: "bundle.js" // 输出文件的名称
 },
 
+
+
+webpack中的插件
+通过安装和配置第三方的插件 可以拓展webpack的能力 从而让webpack用起来更方便
+最常用的webpack有如下两个
+    webpack-dev-server  每当修改源代码 webpack会自动进行项目的打包构建
+    html-webpack-plugin 类似于一个模板引擎插件 可以通过此插件自定制index.html 页面的内容
+
+
+安装插件  webpack-dev-server
+npm install webpack-dev-server -D
+
+配置 package.json 中的命令增加 server
+"scripts": {
+   "dev": "webpack server",
+},
+
+运行 npm run dev 就会启动一个http服务 http://localhost:8080/
+当代码改变时会自动重现编译打包  "打包完成的文件放在内存中"
+
+安装插件 html-webpack-plugin
+npm install html-webpack-plugin -D
+通过HTML插件复制到项目根目录中的index.html 也被放到了内存中
+HTML插件在生成的index.html页面 自动注入了打包的main.js文件
+
+
+
+webpack 中的加载器  loader
+
+loader 概述
+在实际开发过程中 webpack默认只能打包处理以.js后缀名结尾的模块。
+其他非.js后缀名结尾的模块webpack默认处理不了，需要调用loader加载器才能正常打包，否则会报错
+
+loader 加载器的作用  协助webpack打包 处理特定的文件模块 比如
+css-loader 可以打包处理.css 相关文件
+less-loader 可以打包处理.less 相关文件
+babel-loader 可以打包处理webpack 无法处理的高级js语法
+
+
+安装处理css文件的loader
+npm i style-loader css-loader -D
+在webpack.config.js的module->rules 数组中添加 loader 规则
