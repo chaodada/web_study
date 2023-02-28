@@ -1,0 +1,74 @@
+新建项目公空白目录 运行 npm init -y 初始化包管理配置文件 package.json
+
+新建 src 源代码目录
+
+新建 src->index.html首页 和 src->index.js脚本文件
+
+初始化首页基本结构
+
+运行npm install jquery -S 命令 安装JQuery  -S 代表将包信息记录到 package.json 中的 "dependencies"节点下
+或者npm i jquery --save
+
+
+通过ES6模块化导入Jquery 实现列表隔行变色效果
+
+
+
+
+
+
+-S 是 --save 简写
+-D 是 --save-dev的简写
+
+dependencies     不论是开发还是上线 这里边的包都会用到
+devDependencies  只有在开发的时候才会用到
+
+
+安装webpack 相关的两个包 @ 指定固定版本号  -D 代表将包信息记录到 package.json 中的 "devDependencies"节点下
+npm install webpack@5.42.1 webpack-cli@4.7.2 -D
+安装最新版本
+npm install webpack webpack-cli   -D
+
+npmjs.com
+
+在项目中配置 webpack
+在项目根目录中 创建webpack.config.js的webpack配置文件 并初始化如下基本配置
+
+module.exports ={
+    mode: "development" //  mode 用来指定构建模式  可选值 development 开发   production 生产
+}
+
+在package.json 的script节点下 新增dev脚本如下
+
+"script":{
+     "dev":"webpack" // script 节点下的脚本可以通过 npm run 执行 例如 npm run dev
+}
+
+
+运行 npm run  dev  会先读取 webpack.config.js文件 然后执行 webpack 命令
+
+相当于直接运行 webpack
+直接运行webpack报错 解决办法 https://blog.csdn.net/Piconjo/article/details/105716451
+
+在项目目录生成了 dist 目录 main.js
+
+
+在webpack中的默认约定
+在webpack 4.x  和 5.x的版本中 有如下的默认约定
+默认打包入口文件为 src->index.js
+默认的输出文件路径为 dist->main.js
+可以在webpack.config.js中修改打包的默认约定
+
+
+定义打包的入口与出口
+在webpack.config.js配置文件中 通过entry节点指定打包的入口 通过output节点指定打包的出口
+// 导入node.js中专门操作路径的模块
+const path =require('path')
+
+
+entry: path.join(__dirname,'./src/index.js'), // 打包入口文件的路径
+output: {
+      path: path.join(__dirname,'./dist'), // 输出文件的存放路径
+      filename: "bundle.js" // 输出文件的名称
+},
+
