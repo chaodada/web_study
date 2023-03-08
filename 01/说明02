@@ -119,3 +119,7 @@ npm i style-loader css-loader -D
 npm i less less-loader -D
 在webpack.config.js的 module->rules 数组中添加 loader 规则
 
+打包处理样式表中 与url路径相关的文件
+npm i url-loader file-loader -D
+在webpack.config.js的 module->rules 数组中添加 loader 规则
+

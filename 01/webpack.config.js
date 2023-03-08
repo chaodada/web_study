@@ -43,7 +43,8 @@ module.exports = {
     module: {  // 所有第三方文件模块的匹配规则
         rules: [ // 文件后缀名的匹配规则
             {test: /\.css$/, use: ['style-loader', 'css-loader']}, // test  匹配正则   use  指定调用loader    style-loader 和 css-loader 顺序不能调换  loader调用的时候是从后往前调用的
-            {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']} //  less-loader -> css-loader -> style-loader
+            {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']}, //  less-loader -> css-loader -> style-loader
+            {test: /\.jpg|png|gif$/, use: ['url-loader?limit=222229']} //  ?之后的是loader的参数 limit用来指定图片文件的大小 单位是字节 只有小于等于limit的图片 才会被转为base64格式
         ],
     },
 
