@@ -113,4 +113,9 @@ babel-loader 可以打包处理webpack 无法处理的高级js语法
 
 安装处理css文件的loader
 npm i style-loader css-loader -D
-在webpack.config.js的module->rules 数组中添加 loader 规则
+在webpack.config.js的 module->rules 数组中添加 loader 规则
+
+安装处理less文件的loader
+npm i less less-loader -D
+在webpack.config.js的 module->rules 数组中添加 loader 规则
+

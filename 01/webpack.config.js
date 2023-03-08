@@ -31,20 +31,19 @@ module.exports = {
 
     // webpack-dev-server  配置
     devServer: {
-        open:true, // 自动打开浏览器
+        open: true, // 自动打开浏览器
         static: {
             directory: path.join(__dirname, "public"), // 定义 http 默认目录
         },
         port: 9000, // 默认端口
-        host:'127.0.0.1' // 运行域名 默认localhost
+        host: '127.0.0.1' // 运行域名 默认localhost
     },
 
 
-    module: {
-
-
-        rules:[
-            {test:/\.css$/,use:['style-loader','css-loader']}
+    module: {  // 所有第三方文件模块的匹配规则
+        rules: [ // 文件后缀名的匹配规则
+            {test: /\.css$/, use: ['style-loader', 'css-loader']}, // test  匹配正则   use  指定调用loader    style-loader 和 css-loader 顺序不能调换  loader调用的时候是从后往前调用的
+            {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']} //  less-loader -> css-loader -> style-loader
         ],
     },
 
